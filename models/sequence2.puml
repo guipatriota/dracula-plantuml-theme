@@ -1,0 +1,37 @@
+@startuml exemplo_sequence
+!include ../themes/theme.puml
+
+actor Cliente
+boundary App
+entity SistemaDeTotens
+entity ServidorDePagamentos
+entity Bicicleta
+
+Cliente -> App: Abrir Aplicativo
+App -> Cliente: Exibir Mapa de Pontos de Locação
+
+Cliente -> App: Selecionar Ponto de Locação
+App -> SistemaDeTotens: Consultar Disponibilidade de Bicicletas
+SistemaDeTotens -> App: Retornar Disponibilidade
+
+App -> Cliente: Exibir Disponibilidade
+Cliente -> App: Selecionar Bicicleta e Ponto de Locação
+
+App -> ServidorDePagamentos: Processar Pagamento
+ServidorDePagamentos -> App: Confirmar Pagamento
+
+App -> SistemaDeTotens: Liberar Bicicleta
+SistemaDeTotens -> Bicicleta: Destravar
+
+SistemaDeTotens -> App: Confirmar Liberação
+App -> Cliente: Exibir Confirmação de Liberação
+
+Cliente -> Bicicleta: Retirar Bicicleta
+
+Cliente -> App: Finalizar Uso e Bloquear Bicicleta
+App -> SistemaDeTotens: Bloquear Bicicleta
+SistemaDeTotens -> Bicicleta: Travar
+
+SistemaDeTotens -> App: Confirmar Bloqueio
+App -> Cliente: Exibir Confirmação de Bloqueio
+@enduml

@@ -1,6 +1,6 @@
 @startuml
 
-!include ../theme.puml
+!include ../themes/theme.puml
 
 state choice1 <<choice>>
 state fork1   <<fork>>

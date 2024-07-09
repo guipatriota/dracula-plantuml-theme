@@ -893,5 +893,42 @@ skinparam {
   
   ' WrapWidth
 }
-
+<style>
+jsonDiagram {
+	FontColor $color_yellow
+	FontName Fira Mono
+  FontSize 18
+  BackGroundColor $color_bg
+	RoundCorner 8
+  node {
+    BackGroundColor $color_bg_light
+    LineColor $color_pink
+    LineThickness 2
+    LineStyle 10-0
+		header {
+  	  FontStyle bold
+			FontColor $color_blue
+  	}
+    separator {
+      LineThickness 0.8
+      LineColor $color_pink
+      LineStyle 2-0
+    }
+  }
+  arrow {
+    BackGroundColor $color_purple
+    LineColor $color_purple
+    LineThickness 2
+    LineStyle 5-0
+  }
+  highlight {
+    BackGroundColor $color_comment
+		FontStyle bold
+		header {
+  	  FontColor $color_green
+    	
+  	}
+  }
+}
+</style>
 @enduml

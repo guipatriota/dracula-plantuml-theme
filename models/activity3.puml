@@ -1,0 +1,38 @@
+@startuml exemplo2_activity
+!include ../themes/theme.puml
+start
+
+:Receber Pedido;
+
+if (Verificar Estoque) then (Disponível)
+  :Reservar Produto;
+else (Indisponível)
+  :Notificar Cliente;
+endif
+
+:Processar Pagamento;
+
+partition "Departamento de Logística" {
+  :Preparar Envio;
+}
+
+partition "Departamento de Expedição" {
+  :Enviar Produto;
+}
+
+fork
+  :Atualizar Inventário;
+fork again
+  :Enviar Email de Confirmação;
+end fork
+
+:Confirmar Entrega;
+
+repeat
+  :Acompanhar Entrega;
+repeatwhile (Pedido não entregue)
+
+:Finalizar Pedido;
+
+stop
+@enduml

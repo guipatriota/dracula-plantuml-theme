@@ -1,0 +1,27 @@
+@startuml
+
+!include ../themes/theme.puml
+
+
+state "No Gancho" as I1 <<start>>
+
+state "Inativo" as E1 : Telefone está\nem espera
+state "Tocando" as E2 : Telefone está tocando
+state "Em ligação" as E3 : Telefone está em chamada
+
+note right of I1 : Estado inicial:\nTelefone no gancho
+
+'[*] --> E1
+
+I1 --> E1
+
+E1 --> E2 : No gancho\nChamada Recebida
+
+E1 --> E3 : Fora do gancho\nFazer Chamada
+
+E2 --> E1 : No gancho\nNão atendido\nChamada Rejeitada
+E2 --> E3 : Fora do gancho\nAtender Chamada
+
+E3 --> E1 : No gancho\nFinalizar Chamada
+
+@enduml

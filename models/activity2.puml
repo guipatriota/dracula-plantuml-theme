@@ -1,0 +1,38 @@
+@startuml exemplo_activity
+!include ../themes/theme.puml
+start
+
+:Início;
+
+if (Verificar Condição) then (sim)
+  :Ação A;
+else (não)
+  :Ação B;
+endif
+
+:Decisão;
+
+partition "Bloco 1" {
+  :Ação no Bloco 1;
+}
+
+partition "Bloco 2" {
+  :Ação no Bloco 2;
+}
+
+fork
+  :Ação Paralela 1;
+fork again
+  :Ação Paralela 2;
+end fork
+
+:Sincronização de Fluxos;
+
+repeat
+  :Ação de Loop;
+repeat while (Condição de Loop)
+
+:Encerramento;
+
+stop
+@enduml

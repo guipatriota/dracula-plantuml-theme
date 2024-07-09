@@ -1,6 +1,6 @@
 @startuml
 
-!include ../theme.puml
+!include ../themes/theme.puml
 
 participant Participant as Foo
 actor       Actor       as Foo1

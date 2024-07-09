@@ -1,0 +1,56 @@
+@startuml exemplo_component
+!include ../themes/theme.puml
+
+package "Sistema de Locação de Bicicletas" {
+
+  [App Cliente] --> [Servidor de Aplicações]
+  [Servidor de Aplicações] --> [Sistema de Totens]
+  [Servidor de Aplicações] --> [Servidor de Pagamentos]
+  [Sistema de Totens] --> [Totem]
+  [Totem] --> [Bicicleta]
+
+  [App Cliente] - [Interface de Usuário]
+  [Servidor de Aplicações] - [API de Localização]
+  [Servidor de Aplicações] - [API de Pagamentos]
+  [Sistema de Totens] - [Gerenciamento de Totens]
+  [Servidor de Pagamentos] - [Processador de Pagamentos]
+  [Totem] - [Controlador de Totem]
+  [Bicicleta] - [Módulo de Bloqueio]
+
+  [App Cliente] ..> [Servidor de Aplicações] : Utiliza
+  [Servidor de Aplicações] ..> [Sistema de Totens] : Consulta/Atualiza
+  [Servidor de Aplicações] ..> [Servidor de Pagamentos] : Processa
+  [Sistema de Totens] ..> [Totem] : Gerencia
+  [Totem] ..> [Bicicleta] : Trava/Destrava
+
+}
+
+note left of [App Cliente]
+  - Pesquisa pontos de locação
+  - Seleciona bicicleta
+  - Realiza pagamento
+  - Recebe confirmações
+end note
+
+note right of [Servidor de Aplicações]
+  - Coordena a interação entre componentes
+  - Processa solicitações do cliente
+end note
+
+note right of [Sistema de Totens]
+  - Gerencia a disponibilidade e operações dos totens
+end note
+
+note right of [Servidor de Pagamentos]
+  - Processa transações financeiras
+end note
+
+note right of [Totem]
+  - Destrava e trava bicicletas
+  - Comunica-se com o sistema central
+end note
+
+note right of [Bicicleta]
+  - Mecanismo de trava e destrava controlado pelo Totem
+end note
+@enduml

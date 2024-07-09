@@ -1,0 +1,55 @@
+@startuml exenmplo_activity
+!include ../themes/theme.puml
+
+start
+
+:Início;
+
+:Cliente abre o aplicativo;
+
+:Exibir mapa de pontos de locação;
+
+:Cliente seleciona ponto de locação;
+if (Bicicletas Disponíveis?) then (sim)
+  :Exibir lista de bicicletas disponíveis;
+  :Cliente seleciona bicicleta;
+else (não)
+  :Exibir mensagem de indisponibilidade;
+  stop
+endif
+
+:Processar pagamento;
+
+partition "Servidor de Pagamentos" {
+  :Validar pagamento;
+  :Confirmar pagamento;
+}
+
+partition "Sistema de Totens" {
+  :Instruir Totem a liberar bicicleta;
+}
+
+:Confirmar liberação da bicicleta;
+
+:Notificar cliente sobre liberação;
+
+:Cliente retira bicicleta;
+
+repeat
+  :Uso da bicicleta;
+repeat while (Cliente não finalizou uso)
+
+:Cliente retorna bicicleta ao totem;
+
+partition "Sistema de Totens" {
+  :Instruir Totem a travar bicicleta;
+}
+
+:Confirmar bloqueio da bicicleta;
+
+:Notificar cliente sobre finalização;
+
+:Encerrar sessão no aplicativo;
+
+stop
+@enduml

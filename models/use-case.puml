@@ -1,6 +1,6 @@
 @startuml
 
-!include ../theme.puml
+!include ../themes/theme.puml
 
 left to right direction
 actor Guest as g
@@ -14,9 +14,9 @@ package Restaurant {
   usecase "Drink" as UC3
   usecase "Review" as UC4
 }
-fc --> UC4
-g --> UC1
-g --> UC2
-g --> UC3
+fc -- UC4
+g -- UC1
+g -- UC2
+g -- UC3
 
 @enduml
