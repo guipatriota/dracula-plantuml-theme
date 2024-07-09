@@ -1,36 +1,27 @@
-@startuml
+@startuml state_example_2
 
 !include ../themes/theme.puml
 
 
 state "No Gancho" as I1 <<start>>
-state "Fora do Gancho" as I2 <<start>>
-
-state "colocar no gancho" as D1 <<choice>>
 
 state "Inativo" as E1 : Telefone está\nem espera
 state "Tocando" as E2 : Telefone está tocando
 state "Em ligação" as E3 : Telefone está em chamada
 
-state "fim" as F1 <<end>>
-
 note right of I1 : Estado inicial:\nTelefone no gancho
-note right of I2 : Estado inicial:\nTelefone fora do gancho
 
 '[*] --> E1
 
-I1 --> D1 : De telefone no gancho\npara escolha
-I2 --> D1 : De telefone fora do\ngancho para escolha
-D1 --> E1 : Colocar\nno gancho
-D1 --> F1 : Manter fora\ndo gancho
+I1 --> E1
 
-E1 --> E2 : Chamada Recebida
+E1 --> E2 : No gancho\nChamada Recebida
 
-E1 --> E3 : Fazer Chamada
+E1 --> E3 : Fora do gancho\nFazer Chamada
 
-E2 --> E1 : Chamada Rejeitada
-E2 --> E3 : Atender Chamada
+E2 --> E1 : No gancho\nNão atendido\nChamada Rejeitada
+E2 --> E3 : Fora do gancho\nAtender Chamada
 
-E3 --> E1 : Finalizar Chamada
+E3 --> E1 : No gancho\nFinalizar Chamada
 
 @enduml

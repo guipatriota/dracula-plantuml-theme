@@ -1,4 +1,4 @@
-@startuml state_example_3
+@startuml state_example_4
 
 !include ../themes/theme.puml
 
@@ -8,9 +8,14 @@ state "Fora do Gancho" as I2 <<start>>
 
 state "colocar no gancho" as D1 <<choice>>
 
+state "Bifurcação" as B1 <<fork>>
+state "União" as U1 <<join>>
+
 state "Inativo" as E1 : Telefone está\nem espera
 state "Tocando" as E2 : Telefone está tocando
 state "Em ligação" as E3 : Telefone está em chamada
+state "Com ligação em espera" as E4 : Telefone está com a primeira ligação em espera
+state "Em segunda ligação" as E5 : Telefone está em chamada
 
 state "fim" as F1 <<end>>
 
@@ -31,6 +36,15 @@ E1 --> E3 : Fazer Chamada
 E2 --> E1 : Chamada Rejeitada
 E2 --> E3 : Atender Chamada
 
+E2 --> B1 : Atender chamada em espera
+B1 --> E5 : Atender chamada em espera
+E5 --> U1 : Finalizar segunda chamada
+U1 --> E3 : Atender chamada em espera
+B1 --> E4 : Colocar chamada atual em espera
+
+E3 --> E2 : Receber segunda chamada
+
+E4 --> U1 : Finalizar segunda chamada
 E3 --> E1 : Finalizar Chamada
 
 @enduml

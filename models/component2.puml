@@ -1,4 +1,4 @@
-@startuml exemplo_component
+@startuml component_example_2
 !include ../themes/theme.puml
 
 package "Sistema de Locação de Bicicletas" {

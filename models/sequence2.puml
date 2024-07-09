@@ -1,4 +1,4 @@
-@startuml exemplo_sequence
+@startuml sequence_example_2
 !include ../themes/theme.puml
 
 actor Cliente

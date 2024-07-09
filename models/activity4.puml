@@ -1,4 +1,4 @@
-@startuml exenmplo_activity
+@startuml activity_example_4
 !include ../themes/theme.puml
 
 start

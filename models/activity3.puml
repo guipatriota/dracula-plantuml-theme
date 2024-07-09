@@ -1,4 +1,4 @@
-@startuml exemplo2_activity
+@startuml activity_example_3
 !include ../themes/theme.puml
 start
 

@@ -1,4 +1,4 @@
-@startjson 
+@startjson json_example_1
 !include ../themes/theme.puml
 
 #highlight "firstName"

@@ -1,4 +1,4 @@
-@startuml
+@startuml use-case_example_1
 
 !include ../themes/theme.puml
 

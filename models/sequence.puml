@@ -1,4 +1,4 @@
-@startuml
+@startuml sequence_example_1
 
 !include ../themes/theme.puml
 

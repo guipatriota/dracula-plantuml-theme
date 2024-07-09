@@ -1,4 +1,4 @@
-@startuml
+@startuml state_example_1
 
 !include ../themes/theme.puml
 
